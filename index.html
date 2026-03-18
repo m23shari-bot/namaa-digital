@@ -3,38 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namaa Digital Investment | نماء للاستثمار الرقمي</title>
+    <title>Namaa Digital | نماء للاستثمار الرقمي</title>
     <style>
-        :root { --gold: #d4af37; --black: #121212; --dark-grey: #1f1f1f; --green: #2ecc71; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--black); color: white; margin: 0; text-align: center; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #f5d042;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
         
-        header { padding: 40px 20px; border-bottom: 2px solid var(--gold); background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%); }
-        h1 { color: var(--gold); font-size: 2em; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .tagline { font-size: 1.1em; color: #ccc; margin-top: 10px; }
-
-        /* حاسبة الأرباح */
-        .section-title { color: var(--gold); margin-top: 30px; font-size: 1.5em; }
-        .calc-container { background: var(--dark-grey); margin: 20px auto; padding: 25px; border-radius: 15px; width: 85%; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        input { width: 80%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; text-align: center; background: #333; color: white; }
-        .btn-calc { background: var(--gold); color: black; border: none; padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 85%; font-size: 16px; transition: 0.3s; }
-        #result { margin-top: 15px; font-size: 1.1em; }
-        .profit-val { color: var(--green); font-size: 1.3em; font-weight: bold; }
-
-        /* صناديق الخطط */
-        .plans-grid { display: flex; flex-direction: column; gap: 20px; padding: 20px; align-items: center; }
-        .plan-card { background: #1a1a1a; border: 1px solid var(--gold); border-radius: 15px; padding: 20px; width: 90%; position: relative; transition: 0.3s; }
-        .plan-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); }
-        .plan-name { color: var(--gold); font-size: 1.4em; font-weight: bold; margin-bottom: 10px; }
-        .plan-info { font-size: 1.1em; margin: 5px 0; color: #eee; }
-        .plan-min { font-size: 0.9em; color: #aaa; margin-bottom: 15px; }
-        .btn-join { display: inline-block; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; border-radius: 20px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-join:hover { background: var(--gold); color: black; }
-
-        /* زر الواتساب */
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; text-decoration: none; font-size: 30px; }
+        /* الهيدر */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(245, 208, 66, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(245, 208, 66, 0.2);
+            margin-bottom: 30px;
+        }
+        .header h1 { font-size: 2.5rem; color: #ffd700; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
         
-        footer { margin-top: 40px; padding: 30px 20px; color: #666; font-size: 0.8em; border-top: 1px solid #333; }
+        /* الصناديق (الكروت) */
+        .card {
+            background: #141414;
+            border: 1px solid rgba(245, 208, 66, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: #f5d042; box-shadow: 0 0 15px rgba(245,208,66,0.1); }
+        
+        .card-title { color: #ffd700; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; border-right: 3px solid #f5d042; padding-right: 10px; }
+        .card-text { color: #e8d5a3; font-size: 1.05rem; margin-top: 10px; }
+
+        /* زر النسخ */
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #f5d042, #ffd700);
+            color: #000;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .copy-btn.copied { background: #28a745; color: #fff; }
+
+        /* تذييل الصفحة */
+        footer { text-align: center; margin-top: 50px; color: #666; font-size: 0.8rem; }
     </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Namaa Digital</h1>
+        <p>نظام إدارة الاستثمارات والردود الذكية</p>
+    </div>
+
+    <div class="card">
+        <button class="copy-btn" onclick="copyThis(this)">نسخ الرد</button>
+        <div class="card-title">رد سحب أرباح (أبو فهد)</div>
+        <p class="card-text">ألف مبروك يا أبو فهد، تم تأكيد عملية سحب أرباحك من منصة نماء الرقمية وإرسالها لمحفظتك. نسعد دائماً بخدمتك!</p>
+    </div>
+
+    <div class="card">
+        <button class="copy-btn" onclick="copyThis(this)">نسخ الرد</button>
+        <div class="card-title">رد تفعيل خطة (العنود)</div>
+        <p class="card-text">مرحباً بكِ يا العنود، تم تفعيل اشتراككِ في الخطة الذهبية بنجاح. أرباحكِ القادمة ستظهر في التحديث اليومي.</p>
+    </div>
+
+    <div class="card">
+        <button class="copy-btn" onclick="copyThis(this)">نسخ التفاصيل</button>
+        <div class="card-title">تفاصيل الخطة البرونزية</div>
+        <p class="card-text">الخطة البرونزية: الحد الأدنى 300$، العائد الشهري 5%، نظام توزيع أرباح يومي مع دعم فني متواصل.</p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Namaa Digital Investment - جميع الحقوق محفوظة
+</footer>
+
+<script>
+    function copyThis(button) {
+        const card = button.closest('.card');
+        const text = card.querySelector('.card-text').innerText;
+        
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = button.innerText;
+            button.innerText = "تم النسخ! ✅";
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>    </style>
 </head>
 <body>
 
