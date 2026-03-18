@@ -4,37 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Namaa Digital | نماء للاستثمار الرقمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #0a0a0a;
+            --card-bg: #141414;
+            --text-gold: #f5d042;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #f5d042;
-            padding: 20px;
-            line-height: 1.6;
+            background-color: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
         }
-        .container { max-width: 800px; margin: 0 auto; }
-        
-        /* الهيدر */
-        .header {
+
+        /* الجزء الترحيبي */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(245, 208, 66, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(245, 208, 66, 0.2);
-            margin-bottom: 30px;
+            border-bottom: 2px solid var(--gold);
         }
-        .header h1 { font-size: 2.5rem; color: #ffd700; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
+
+        .hero h1 { font-size: 3.5rem; color: var(--gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; color: #ddd; margin-top: 10px; }
+
+        /* الإحصائيات */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            background: var(--card-bg);
+            padding: 30px;
+            gap: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .stat-item h3 { color: var(--gold); font-size: 2rem; }
+        .stat-item p { color: #888; font-size: 0.9rem; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         
-        /* الصناديق (الكروت) */
-        .card {
-            background: #141414;
-            border: 1px solid rgba(245, 208, 66, 0.3);
-            border-radius: 15px;
-            padding: 25px;
+        h2.section-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-size: 2rem;
             position: relative;
-            margin-bottom: 20px;
+        }
+
+        /* بطاقات الخطط */
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .plan-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
             transition: 0.3s;
+        }
+        .plan-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .plan-card i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+        .plan-card h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .plan-card .price { font-size: 1.8rem; font-weight: bold; color: var(--text-gold); margin: 10px 0; }
+        .plan-card ul { list-style: none; color: #bbb; margin-bottom: 20px; }
+
+        /* نظام الردود الذكي المدمج */
+        .response-section { background: #0f0f0f; padding: 40px 20px; border-radius: 20px; }
+        .copy-card {
+            background: var(--card-bg);
+            border-right: 4px solid var(--gold);
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            border-radius: 5px 15px 15px 5px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid #333; color: #666; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Namaa Digital</h1>
+        <p>الريادة في الاستثمار الرقمي المتوافق مع الشريعة</p>
+    </section>
+
+    <div class="stats">
+        <div class="stat-item"><h3>+500</h3><p>مستثمر نشط</p></div>
+        <div class="stat-item"><h3>$1.2M</h3><p>أرباح موزعة</p></div>
+        <div class="stat-item"><h3>24/7</h3><p>دعم فني</p></div>
+        <div class="stat-item"><h3>100%</h3><p>أمان وشفافية</p></div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">خطط الاستثمار</h2>
+        <div class="plans">
+            <div class="plan-card">
+                <i class="fas fa-seedling"></i>
+                <h3>الخطة البرونزية</h3>
+                <div class="price">$300 - $1000</div>
+                <ul><li>عائد شهري 5%</li><li>سحب أسبوعي</li></ul>
+                <button class="copy-btn" style="position:static;">اشترك الآن</button>
+            </div>
+            <div class="plan-card">
+                <i class="fas fa-crown"></i>
+                <h3>الخطة الذهبية</h3>            transition: 0.3s;
         }
         .card:hover { border-color: #f5d042; box-shadow: 0 0 15px rgba(245,208,66,0.1); }
         
