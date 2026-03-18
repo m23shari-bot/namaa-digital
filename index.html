@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaa Digital Investment | نماء للاستثمار الرقمي</title>
+    <style>
+        :root { --gold: #d4af37; --black: #121212; --dark-grey: #1f1f1f; --green: #2ecc71; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--black); color: white; margin: 0; text-align: center; }
+        
+        header { padding: 40px 20px; border-bottom: 2px solid var(--gold); background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%); }
+        h1 { color: var(--gold); font-size: 2em; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tagline { font-size: 1.1em; color: #ccc; margin-top: 10px; }
+
+        /* حاسبة الأرباح */
+        .section-title { color: var(--gold); margin-top: 30px; font-size: 1.5em; }
+        .calc-container { background: var(--dark-grey); margin: 20px auto; padding: 25px; border-radius: 15px; width: 85%; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { width: 80%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; text-align: center; background: #333; color: white; }
+        .btn-calc { background: var(--gold); color: black; border: none; padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 85%; font-size: 16px; transition: 0.3s; }
+        #result { margin-top: 15px; font-size: 1.1em; }
+        .profit-val { color: var(--green); font-size: 1.3em; font-weight: bold; }
+
+        /* صناديق الخطط */
+        .plans-grid { display: flex; flex-direction: column; gap: 20px; padding: 20px; align-items: center; }
+        .plan-card { background: #1a1a1a; border: 1px solid var(--gold); border-radius: 15px; padding: 20px; width: 90%; position: relative; transition: 0.3s; }
+        .plan-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); }
+        .plan-name { color: var(--gold); font-size: 1.4em; font-weight: bold; margin-bottom: 10px; }
+        .plan-info { font-size: 1.1em; margin: 5px 0; color: #eee; }
+        .plan-min { font-size: 0.9em; color: #aaa; margin-bottom: 15px; }
+        .btn-join { display: inline-block; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; border-radius: 20px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-join:hover { background: var(--gold); color: black; }
+
+        /* زر الواتساب */
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; text-decoration: none; font-size: 30px; }
+        
+        footer { margin-top: 40px; padding: 30px 20px; color: #666; font-size: 0.8em; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Namaa Digital</h1>
+    <div class="tagline">استثمر بذكاء.. نماء نحو المستقبل الرقمي</div>
+</header>
+
+<h2 class="section-title">📊 حاسبة العوائد الذكية</h2>
+<div class="calc-container">
+    <input type="number" id="amount" placeholder="أدخل مبلغ الاستثمار ($)">
+    <button class="btn-calc" onclick="calculateProfit()">احسب أرباحك الآن</button>
+    <div id="result"></div>
+</div>
+
+<h2 class="section-title">💼 خططنا الاستثمارية</h2>
+<div class="plans-grid">
+    <div class="plan-card">
+        <div class="plan-name">الخطة البرونزية</div>
+        <div class="plan-info">عائد شهري: 5%</div>
+        <div class="plan-min">الحد الأدنى: $300</div>
+        <a href="https://wa.me/967714065635?text=أريد الاشتراك في الخطة البرونزية" class="btn-join">اشترك الآن</a>
+    </div>
+
+    <div class="plan-card">
+        <div class="plan-name" style="color: #c0c0c0;">الخطة الفضية</div>
+        <div class="plan-info">عائد شهري: 10%</div>
+        <div class="plan-min">الحد الأدنى: $500</div>
+        <a href="https://wa.me/967714065635?text=أريد الاشتراك في الخطة الفضية" class="btn-join">اشترك الآن</a>
+    </div>
+
+    <div class="plan-card" style="border-width: 2px;">
+        <div class="plan-name">الخطة الذهبية</div>
+        <div class="plan-info">عائد شهري: 15%</div>
+        <div class="plan-min">الحد الأدنى: $1000</div>
+        <a href="https://wa.me/967714065635?text=أريد الاشتراك في الخطة الذهبية" class="btn-join">اشترك الآن</a>
+    </div>
+</div>
+
+<a href="https://wa.me/967714065635" class="whatsapp-float" target="_blank">📲</a>
+
+<footer>
+    &copy; 2026 Namaa Digital Investment<br>نماء للاستثمار الرقمي - جميع الحقوق محفوظة
+</footer>
+
+<script>
+    function calculateProfit() {
+        const amount = document.getElementById('amount').value;
+        const resultDiv = document.getElementById('result');
+        if (amount >= 300) {
+            let rate = amount >= 1000 ? 0.15 : (amount >= 500 ? 0.10 : 0.05);
+            const profit = (amount * rate).toFixed(2);
+            resultDiv.innerHTML = `عائدك المتوقع (${rate*100}%): <span class="profit-val">$${profit}</span>`;
+            resultDiv.style.color = "white";
+        } else if (amount > 0) {
+            resultDiv.innerHTML = "الحد الأدنى للاستثمار هو $300";
+            resultDiv.style.color = "#ff4d4d";
+        } else {
+            resultDiv.innerHTML = "يرجى إدخال مبلغ صحيح";
+        }
+    }
+</script>
+
+</body>
+</html>
