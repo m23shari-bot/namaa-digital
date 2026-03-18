@@ -3,38 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namaa Digital | نماء للاستثمار الرقمي</title>
+    <title>Namaa Digital | نماء للاستثمار</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --gold: #d4af37;
-            --dark-bg: #0a0a0a;
-            --card-bg: #141414;
-            --text-gold: #f5d042;
-        }
-
+        :root { --gold: #d4af37; --dark: #0a0a0a; --card: #141414; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: #fff;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--dark); color: white; line-height: 1.6; }
+        
+        .hero { padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--gold); background: linear-gradient(to bottom, #1a1a1a, #0a0a0a); }
+        .hero h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .section-title { color: var(--gold); text-align: center; margin-bottom: 25px; font-size: 1.5rem; }
 
-        /* الجزء الترحيبي */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-bottom: 2px solid var(--gold);
-        }
+        .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .plan-card { background: var(--card); border: 1px solid #333; padding: 25px; border-radius: 15px; text-align: center; transition: 0.3s; }
+        .plan-card:hover { border-color: var(--gold); }
+        .plan-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        .plan-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .price { font-size: 1.6rem; color: var(--gold); font-weight: bold; margin: 10px 0; }
+        
+        .response-box { background: var(--card); border-right: 4px solid var(--gold); padding: 15px; border-radius: 5px; margin-bottom: 15px; position: relative; }
+        .copy-btn { background: var(--gold); color: black; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; float: left; }
+        
+        footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
 
+    <div class="hero">
+        <h1>Namaa Digital</h1>
+        <p>الاستثمار الرقمي الآمن والاحترافي</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">خطط الاستثمار</h2>
+        <div class="plans">
+            <div class="plan-card">
+                <i class="fas fa-seedling"></i>
+                <h3>الخطة البرونزية</h3>
+                <div class="price">$300 - $1000</div>
+                <p>عائد شهري 5%<br>سحب أسبوعي للأرباح</p>
+            </div>
+            <div class="plan-card">
+                <i class="fas fa-crown"></i>
+                <h3>الخطة الذهبية</h3>
+                <div class="price">$5000+</div>
+                <p>عائد شهري 12%<br>مدير حساب خاص وتوصيات VIP</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:40px;">نظام النسخ السريع</h2>
+        <div class="response-box">
+            <button class="copy-btn" onclick="copyMe(this)">نسخ</button>
+            <strong>رد سحب الأرباح:</strong>
+            <p class="text">أهلاً بك، تم تنفيذ عملية سحب أرباحك بنجاح من نماء الرقمية. شكراً لثقتك بنا.</p>
+        </div>
+        <div class="response-box">
+            <button class="copy-btn" onclick="copyMe(this)">نسخ</button>
+            <strong>رد تفعيل الاشتراك:</strong>
+            <p class="text">تم تفعيل خطتك الاستثمارية بنجاح. عوائدك ستبدأ بالنزول في حسابك حسب الجدول الزمني.</p>
+        </div>
+    </div>
+
+    <footer>جميع الحقوق محفوظة لشركة نماء الرقمية &copy; 2026</footer>
+
+    <script>
+        function copyMe(btn) {
+            const text = btn.parentElement.querySelector('.text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const oldText = btn.innerText;
+                btn.innerText = "تم!";
+                btn.style.background = "#28a745";
+                btn.style.color = "white";
+                setTimeout(() => { 
+                    btn.innerText = oldText; 
+                    btn.style.background = "#d4af37";
+                    btn.style.color = "black";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
         .hero h1 { font-size: 3.5rem; color: var(--gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.2rem; color: #ddd; margin-top: 10px; }
 
